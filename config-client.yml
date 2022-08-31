@@ -1,0 +1,26 @@
+	spring:
+	  profiles:
+	    active: dev
+	---
+	server:
+	  port: 8201
+	spring:
+	  profiles: dev
+	  application:
+	    name: springcloud-provider-dept
+	eureka:
+	  client:
+	    service-url: # 从三个注册中心中随机取一个去访问
+	      defaultZone: http://localhost:7001/eureka/
+	---
+	server:
+	  port: 8202
+	spring:
+	  profiles: test
+	  application:
+	    name: springcloud-provider-dept
+	eureka:
+	  client:
+	    register-with-eureka: false # 不向 Eureka注册自己
+	    service-url: # 从三个注册中心中随机取一个去访问
+      defaultZone: http://localhost:7001/eureka/
